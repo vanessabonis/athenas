@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="vanessabonis">
+        <createTable tableName="pessoa">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nasc" type="DATE"/>
+            <column name="cpf" type="VARCHAR(14)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="sexo" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="altura" type="DOUBLE"/>
+            <column name="peso" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="vanessabonis">
+        <modifyDataType tableName="pessoa" columnName="sexo" newDataType="CHAR(1)"/>
+    </changeSet>
+
+</databaseChangeLog>
