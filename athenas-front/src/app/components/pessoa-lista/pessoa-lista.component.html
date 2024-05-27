@@ -1,0 +1,54 @@
+<form [formGroup]="filtroForm">
+  <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" formControlName="nome">
+  </div>
+  <div>
+    <label for="cpf">CPF:</label>
+    <input id="cpf" formControlName="cpf">
+  </div>
+  <div>
+    <label for="sexo">Sexo:</label>
+    <select id="sexo" formControlName="sexo">
+      <option value="">Todos</option>
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+    </select>
+  </div>
+  <button type="button" (click)="applyFilter()">Filtrar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Data de Nascimento</th>
+      <th>CPF</th>
+      <th>Sexo</th>
+      <th>Altura</th>
+      <th>Peso</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pessoa of listaPessoas">
+      <td>{{ pessoa.nome }}</td>
+      <td>{{ pessoa.dataNascimento | date }}</td>
+      <td>{{ pessoa.cpf }}</td>
+      <td>{{ pessoa.sexo }}</td>
+      <td>{{ pessoa.altura }}</td>
+      <td>{{ pessoa.peso }}</td>
+      <td>
+        <button (click)="editarPessoa(pessoa.id)">Editar</button>
+        <button (click)="excluirPessoa(pessoa.id)">Excluir</button>
+        <button (click)="calcularPesoIdeal(pessoa.cpf)">Calcular Peso Ideal</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <button [disabled]="pageable.pageNumber === 0" (click)="previousPage()">Anterior</button>
+  <button [disabled]="pageable.pageNumber >= pagePessoas.totalPages - 1" (click)="nextPage()">Próxima</button>
+</div>
+<p>Página {{ pageable.pageNumber + 1 }} de {{ pagePessoas.totalPages }}</p>

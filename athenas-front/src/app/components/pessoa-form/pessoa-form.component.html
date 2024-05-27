@@ -1,0 +1,51 @@
+<div class="mat-elevation-z8">
+    <form [formGroup]="pessoaForm" (ngSubmit)="onSubmit()" class="mat-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" placeholder="Nome" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <mat-error *ngIf="pessoaForm.get('nome')?.invalid && (pessoaForm.get('nome')?.dirty || pessoaForm.get('nome')?.touched)">
+              Nome é obrigatório e deve ter no máximo 255 caracteres
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Data de Nascimento" >
+            <mat-hint>YYYY/MM/DD</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="pessoaForm.get('dataNascimento')?.invalid && (pessoaForm.get('dataNascimento')?.dirty || pessoaForm.get('dataNascimento')?.touched)">
+              Data de Nascimento é obrigatória
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" placeholder="CPF" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <mat-error *ngIf="pessoaForm.get('cpf')?.invalid && (pessoaForm.get('cpf')?.dirty || pessoaForm.get('cpf')?.touched)">
+              CPF é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="sexo" placeholder="Sexo">
+              <mat-option value="M">Masculino</mat-option>
+              <mat-option value="F">Feminino</mat-option>
+            </mat-select>
+            <mat-error *ngIf="pessoaForm.get('sexo')?.invalid && (pessoaForm.get('sexo')?.dirty || pessoaForm.get('sexo')?.touched)">
+              Sexo é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Altura</mat-label>
+            <input matInput type="number" formControlName="altura" placeholder="Altura">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Peso</mat-label>
+            <input matInput type="number" formControlName="peso" placeholder="Peso">
+          </mat-form-field>
+
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+        <button mat-button color="primary" type="submit" [disabled]="pessoaForm.invalid">Salvar</button>
+    </form>
+  </div>
+  
+

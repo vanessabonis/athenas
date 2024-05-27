@@ -1,0 +1,41 @@
+:host {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #121212; /* Cor de fundo escura */
+    color: #ab89c7; /* Cor do texto clara */
+  }
+  
+  #app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  mat-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #1f1f1f;
+  }
+  
+  
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
